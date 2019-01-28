@@ -39,7 +39,7 @@ class SwitchTableViewCell: UITableViewCell {
     }
     
     //MARK: - Privat Methods
-    func updateViews() {
+    private func updateViews() {
         guard let alarm = alarm else {return}
         nameLabel.text = alarm.name
         timeLabel.text = alarm.fireTimeAsString

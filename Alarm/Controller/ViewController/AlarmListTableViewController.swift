@@ -41,6 +41,12 @@ class AlarmListTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //IIDOO
+        if  segue.identifier == "toDetailTVC" {
+            guard let index = tableView.indexPathForSelectedRow else {return}
+            if let destinationVC = segue.destination as? AlarmDetailTableViewController {
+                destinationVC.alarm = AlarmController.shared.alarms[index.row]
+            }
+        }
     }
 }
 
@@ -54,6 +60,4 @@ extension AlarmListTableViewController: SwitchTableViewCellDelegate {
         tableView.reloadRows(at: [index], with: .automatic)
         tableView.endUpdates()
     }
-    
-    
 }
