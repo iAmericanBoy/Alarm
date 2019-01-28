@@ -38,4 +38,15 @@ class AlarmController {
         guard let index = alarms.index(of: alarm) else {return}
         alarms.remove(at: index)
     }
+    
+    //MARK: MockData
+    var mockAlarms: [Alarm] {
+        get {
+            let alarm1 = Alarm(name: "firstAlarm", fireDate: Date(timeIntervalSinceNow: 1000), enabled: true)
+            let alarm2 = Alarm(name: "secondAlarm", fireDate: Date(timeIntervalSinceNow: 500), enabled: false)
+            let alarm3 = Alarm(name: "thirdAlarm", fireDate: Date(timeIntervalSinceNow: 100), enabled: false)
+            let alarm4 = Alarm(name: "fourthAlarm", fireDate: Date(timeIntervalSinceNow: 10000), enabled: true)
+            return[alarm1,alarm2,alarm3,alarm4]
+        }
+    }
 }
