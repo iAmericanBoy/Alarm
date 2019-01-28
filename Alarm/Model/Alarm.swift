@@ -13,7 +13,7 @@ class Alarm {
     var fireDate: Date
     var name: String
     var enabled: Bool
-    var uuid: String
+    var uuid: String = ""
     
     var fireTimeAsString: String {
         get {
@@ -23,11 +23,17 @@ class Alarm {
         }
     }
     
-    init(name: String, fireDate: Date, enabled: Bool, uuid: String) {
+    init(name: String, fireDate: Date, enabled: Bool) {
         self.name = name
         self.fireDate = fireDate
         self.enabled = enabled
-        self.uuid = uuid
     }
+}
+
+extension Alarm: Equatable{
+    static func == (lhs: Alarm, rhs: Alarm) -> Bool {
+        return lhs.name == rhs.name && lhs.fireDate == rhs.fireDate && lhs.enabled == rhs.enabled && lhs.uuid == rhs.uuid
+    }
+    
     
 }
