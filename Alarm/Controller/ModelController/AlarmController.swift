@@ -37,6 +37,10 @@ class AlarmController {
         alarms[index].fireDate = fireDate
         alarms[index].enabled = enabled
     }
+    func toggleEnable(for alarm:Alarm) {
+        guard let index = alarms.index(of: alarm) else {return}
+        alarms[index].enabled = !alarm.enabled
+    }
     
     //delete
     func delete(alarm: Alarm) {

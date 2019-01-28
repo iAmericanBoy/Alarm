@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SwitchTableViewCellDelegate: class {
+    func alarmSwitchValueChanged(_ cell: SwitchTableViewCell)
+}
+
 class SwitchTableViewCell: UITableViewCell {
     
     //MARK: Outlets
@@ -21,6 +25,7 @@ class SwitchTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    weak var delegate: SwitchTableViewCellDelegate?
     
     //MARK: - LifeCycle
     override func awakeFromNib() {
@@ -30,6 +35,7 @@ class SwitchTableViewCell: UITableViewCell {
     
     //MARK: - Actions
     @IBAction func switchValueChanged(_ sender: UISwitch) {
+        delegate?.alarmSwitchValueChanged(self)
     }
     
     //MARK: - Privat Methods

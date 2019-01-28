@@ -46,8 +46,8 @@
 		B6519DA121FF96E0007B9D59 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B65F72E321FF86B4008EA382 /* ViewController */,
 				B6519DA821FFA117007B9D59 /* ModelController */,
+				B65F72E321FF86B4008EA382 /* ViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
