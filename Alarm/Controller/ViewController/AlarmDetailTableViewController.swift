@@ -27,19 +27,37 @@ class AlarmDetailTableViewController: UITableViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "New Alarm"
     }
     
     //MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        guard let alarmName = nameTextField.text else {return}
+        if let alarm = alarm {
+            //update
+            AlarmController.shared.update(alarm: alarm, withName: alarmName, fireDate: alarmDatePicker.date, enabled: alarmIsOn)
+        } else {
+            //newAlarm
+            AlarmController.shared.addAlarmWith(name: alarmName, fireDate: alarmDatePicker.date, enabled: alarmIsOn)
+        }
+        navigationController?.popViewController(animated: true)
     }
-    @IBAction func eneableButtonTapped(_ sender: UIButton) {
+    @IBAction func enableButtonTapped(_ sender: UIButton) {
+        if alarmIsOn {
+            enableButton.setTitle("On", for: .normal)
+        } else {
+            enableButton.setTitle("Off", for: .normal)
+        }
+        
     }
     
     //MARK: - private Functions
     private func updateViews() {
         guard let alarm = alarm else {return}
+        self.title = ""
         nameTextField.text = alarm.name
         alarmDatePicker.date = alarm.fireDate
+        alarmIsOn = alarm.enabled
         if alarm.enabled {
             enableButton.setTitle("On", for: .normal)
         } else {

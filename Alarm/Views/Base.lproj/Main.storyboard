@@ -125,7 +125,7 @@
                                                                     <rect key="frame" x="266.5" y="0.0" width="76.5" height="30"/>
                                                                     <state key="normal" title="Enable"/>
                                                                     <connections>
-                                                                        <action selector="eneableButtonTapped:" destination="dvM-Fx-gPf" eventType="touchUpInside" id="KpJ-zi-OAe"/>
+                                                                        <action selector="enableButtonTapped:" destination="dvM-Fx-gPf" eventType="touchUpInside" id="iGo-H8-y5m"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
