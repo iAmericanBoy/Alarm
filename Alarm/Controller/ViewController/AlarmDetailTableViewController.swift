@@ -43,12 +43,20 @@ class AlarmDetailTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func enableButtonTapped(_ sender: UIButton) {
-        if alarmIsOn {
-            enableButton.setTitle("On", for: .normal)
-        } else {
-            enableButton.setTitle("Off", for: .normal)
+        switch enableButton.title(for: .normal) {
+            case "On":
+                enableButton.setTitle("Off", for: .normal)
+                alarmIsOn = false
+            case "Off":
+                enableButton.setTitle("On", for: .normal)
+                alarmIsOn = true
+            case "Enable":
+                enableButton.setTitle("On", for: .normal)
+                alarmIsOn = true
+            default:
+                break
         }
-        
+
     }
     
     //MARK: - private Functions
