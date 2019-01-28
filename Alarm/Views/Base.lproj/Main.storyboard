@@ -18,14 +18,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3h4-Zc-oG8">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="81" id="3h4-Zc-oG8" customClass="SwitchTableViewTableViewCell" customModule="Alarm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3h4-Zc-oG8" id="yEQ-IZ-v8m">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HZ7-kC-5cM">
+                                            <rect key="frame" x="16" y="11" width="343" height="59"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-en-8WY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="286" height="59"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zf-bj-VIv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="29.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(time)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3n-QX-q00">
+                                                            <rect key="frame" x="0.0" y="29.5" width="286" height="29.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DuC-fr-JQv">
+                                                    <rect key="frame" x="294" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="3h4-Zc-oG8" eventType="valueChanged" id="Rkf-zM-nlf"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Oaa-en-8WY" firstAttribute="top" secondItem="HZ7-kC-5cM" secondAttribute="topMargin" id="4ha-z4-SJI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Oaa-en-8WY" secondAttribute="bottom" id="s4R-CM-2gd"/>
+                                                <constraint firstItem="Oaa-en-8WY" firstAttribute="leading" secondItem="HZ7-kC-5cM" secondAttribute="leadingMargin" id="udz-bD-50d"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HZ7-kC-5cM" firstAttribute="top" secondItem="yEQ-IZ-v8m" secondAttribute="topMargin" id="J1R-bb-M55"/>
+                                        <constraint firstItem="HZ7-kC-5cM" firstAttribute="leading" secondItem="yEQ-IZ-v8m" secondAttribute="leadingMargin" id="Sfp-xZ-6JH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HZ7-kC-5cM" secondAttribute="bottom" id="obt-cV-qJc"/>
+                                        <constraint firstItem="HZ7-kC-5cM" firstAttribute="trailing" secondItem="yEQ-IZ-v8m" secondAttribute="trailingMargin" id="vUs-Qk-xHf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="alarmSwitch" destination="DuC-fr-JQv" id="jKf-Ei-Xk3"/>
+                                    <outlet property="nameLabel" destination="9zf-bj-VIv" id="XvF-J4-VL2"/>
+                                    <outlet property="timeLabel" destination="m3n-QX-q00" id="3m7-VJ-lZv"/>
                                     <segue destination="dvM-Fx-gPf" kind="show" identifier="toDetailTVC" id="u2C-1B-soX"/>
                                 </connections>
                             </tableViewCell>
@@ -45,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyl-k2-94m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-232" y="131"/>
+            <point key="canvasLocation" x="-232.80000000000001" y="130.88455772113943"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Qaq-mK-5ZV">
