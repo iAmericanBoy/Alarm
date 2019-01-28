@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B6519DA021FF9699007B9D59 /* SwitchTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6519D9F21FF9699007B9D59 /* SwitchTableViewTableViewCell.swift */; };
+		B6519DA021FF9699007B9D59 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6519D9F21FF9699007B9D59 /* SwitchTableViewCell.swift */; };
 		B6519DA521FF9E29007B9D59 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6519DA421FF9E29007B9D59 /* Alarm.swift */; };
 		B6519DA721FFA111007B9D59 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6519DA621FFA111007B9D59 /* AlarmController.swift */; };
 		B65F72CE21FF840E008EA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F72CD21FF840E008EA382 /* AppDelegate.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B6519D9F21FF9699007B9D59 /* SwitchTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewTableViewCell.swift; sourceTree = "<group>"; };
+		B6519D9F21FF9699007B9D59 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		B6519DA421FF9E29007B9D59 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		B6519DA621FFA111007B9D59 /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		B65F72CA21FF840E008EA382 /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,8 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B65F72E621FF881B008EA382 /* AlarmListTableViewController.swift */,
+				B6519D9F21FF9699007B9D59 /* SwitchTableViewCell.swift */,
 				B65F72E821FF88C9008EA382 /* AlarmDetailTableViewController.swift */,
-				B6519D9F21FF9699007B9D59 /* SwitchTableViewTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65F72E921FF88C9008EA382 /* AlarmDetailTableViewController.swift in Sources */,
-				B6519DA021FF9699007B9D59 /* SwitchTableViewTableViewCell.swift in Sources */,
+				B6519DA021FF9699007B9D59 /* SwitchTableViewCell.swift in Sources */,
 				B6519DA521FF9E29007B9D59 /* Alarm.swift in Sources */,
 				B65F72CE21FF840E008EA382 /* AppDelegate.swift in Sources */,
 				B65F72E721FF881B008EA382 /* AlarmListTableViewController.swift in Sources */,
@@ -348,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
-				INFOPLIST_FILE = Alarm/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Alarm/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -366,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
-				INFOPLIST_FILE = Alarm/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Alarm/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

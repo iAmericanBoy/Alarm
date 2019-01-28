@@ -16,6 +16,11 @@ class AlarmController {
     //MARK: Source of truth
     var alarms: [Alarm] = []
     
+    //MARK: init
+    init() {
+        alarms = mockAlarms
+    }
+    
     //MARK: CRUD
     //create
     func addAlarmWith(name: String,fireDate: Date, enabled: Bool) {
@@ -46,7 +51,7 @@ class AlarmController {
             let alarm2 = Alarm(name: "secondAlarm", fireDate: Date(timeIntervalSinceNow: 500), enabled: false)
             let alarm3 = Alarm(name: "thirdAlarm", fireDate: Date(timeIntervalSinceNow: 100), enabled: false)
             let alarm4 = Alarm(name: "fourthAlarm", fireDate: Date(timeIntervalSinceNow: 10000), enabled: true)
-            return[alarm1,alarm2,alarm3,alarm4]
+            return [alarm1,alarm2,alarm3,alarm4]
         }
     }
 }

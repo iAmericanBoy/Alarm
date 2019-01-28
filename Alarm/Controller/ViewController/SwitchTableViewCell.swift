@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwitchTableViewTableViewCell: UITableViewCell {
+class SwitchTableViewCell: UITableViewCell {
     
     //MARK: Outlets
     @IBOutlet weak var timeLabel: UILabel!
@@ -16,6 +16,11 @@ class SwitchTableViewTableViewCell: UITableViewCell {
     @IBOutlet weak var alarmSwitch: UISwitch!
     
     //MARK: - Properties
+    var alarm: Alarm? {
+        didSet {
+            updateViews()
+        }
+    }
     
     //MARK: - LifeCycle
     override func awakeFromNib() {
@@ -27,6 +32,13 @@ class SwitchTableViewTableViewCell: UITableViewCell {
     @IBAction func switchValueChanged(_ sender: UISwitch) {
     }
     
+    //MARK: - Privat Methods
+    func updateViews() {
+        guard let alarm = alarm else {return}
+        nameLabel.text = alarm.name
+        timeLabel.text = alarm.fireTimeAsString
+        alarmSwitch.isOn = alarm.enabled
+    }
 
 
 }
