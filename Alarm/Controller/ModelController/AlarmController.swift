@@ -22,6 +22,11 @@ class AlarmController: AlarmScheduler {
     func addAlarmWith(name: String,fireDate: Date, enabled: Bool) {
         let newAlarm = Alarm(name: name, fireDate: fireDate, enabled: enabled)
         alarms.append(newAlarm)
+        if enabled {
+            scheduleNotifications(for: newAlarm)
+        } else {
+            cancelNotifications(for: newAlarm)
+        }
         saveToPersistanceStorage()
     }
     
@@ -32,6 +37,11 @@ class AlarmController: AlarmScheduler {
         alarms[index].name = name
         alarms[index].fireDate = fireDate
         alarms[index].enabled = enabled
+        if alarms[index].enabled {
+            scheduleNotifications(for: alarms[index])
+        } else {
+            cancelNotifications(for: alarms[index])
+        }
         saveToPersistanceStorage()
     }
     func toggleEnable(for alarm:Alarm) {
@@ -39,9 +49,9 @@ class AlarmController: AlarmScheduler {
         alarms[index].enabled = !alarm.enabled
         saveToPersistanceStorage()
         if alarms[index].enabled {
-            scheduleNotifications(for: alarm)
+            scheduleNotifications(for: alarms[index])
         } else {
-            cancelNotifications(for: alarm)
+            cancelNotifications(for: alarms[index])
         }
     }
     
@@ -49,6 +59,7 @@ class AlarmController: AlarmScheduler {
     func delete(alarm: Alarm) {
         guard let index = alarms.index(of: alarm) else {return}
         alarms.remove(at: index)
+        cancelNotifications(for: alarm)
         saveToPersistanceStorage()
     }
     
@@ -112,6 +123,9 @@ extension AlarmScheduler {
                 print("An error scheduling a notification has occured:\(String(describing: error.localizedDescription))")
             }
         }
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (reqests) in
+            print(reqests)
+        })
     }
     func cancelNotifications(for alarm: Alarm) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.uuid])
