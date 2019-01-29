@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if granted {
+                print("permission has been granted")
+            } else {
+                print("permission has not been granted")
+            }
+            if let error = error {
+                print("An error has occured:\(String(describing: error.localizedDescription))")
+            }
+        }
         AlarmController.shared.loadFromPersistantStorage()
         return true
     }
