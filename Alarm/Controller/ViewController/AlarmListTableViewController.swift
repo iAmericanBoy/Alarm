@@ -32,7 +32,8 @@ class AlarmListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            AlarmController.shared.alarms.remove(at: indexPath.row)
+            let alarm = AlarmController.shared.alarms[indexPath.row]
+            AlarmController.shared.delete(alarm: alarm)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
