@@ -125,7 +125,7 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TmP-vq-sER">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TmP-vq-sER">
                                                             <rect key="frame" x="0.0" y="35" width="320" height="222"/>
                                                             <date key="date" timeIntervalSinceReferenceDate="570399008.10295701">
                                                                 <!--2019-01-28 20:10:08 +0000-->

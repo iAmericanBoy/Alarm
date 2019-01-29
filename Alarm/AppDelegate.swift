@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("permission has not been granted")
             }
             if let error = error {
-                print("An error has occured:\(String(describing: error.localizedDescription))")
+                print("An error with requesting permission for UserNotifications has occured:\(String(describing: error.localizedDescription))")
             }
         }
         AlarmController.shared.loadFromPersistantStorage()

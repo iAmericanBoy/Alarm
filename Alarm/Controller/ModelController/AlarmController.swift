@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UserNotifications
 
-class AlarmController {
+class AlarmController: AlarmScheduler {
     
     //MARK: - Singleton
     static let shared = AlarmController()
@@ -37,6 +38,11 @@ class AlarmController {
         guard let index = alarms.index(of: alarm) else {return}
         alarms[index].enabled = !alarm.enabled
         saveToPersistanceStorage()
+        if alarms[index].enabled {
+            scheduleNotifications(for: alarm)
+        } else {
+            cancelNotifications(for: alarm)
+        }
     }
     
     //delete
@@ -82,5 +88,32 @@ class AlarmController {
             print("An Error during load has accured. The message is \(String(describing: error))")
         }
     }
-    
+}
+
+protocol AlarmScheduler {
+    func scheduleNotifications(for alarm: Alarm)
+    func cancelNotifications(for alarm: Alarm)
+}
+
+extension AlarmScheduler {
+    func scheduleNotifications(for alarm: Alarm) {
+        let userNotificationContent = UNMutableNotificationContent()
+        userNotificationContent.sound = UNNotificationSound.default
+        userNotificationContent.title = alarm.name
+        userNotificationContent.body = "Your Alarm is going off"
+        
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: alarm.fireDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: alarm.uuid, content: userNotificationContent, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("An error scheduling a notification has occured:\(String(describing: error.localizedDescription))")
+            }
+        }
+    }
+    func cancelNotifications(for alarm: Alarm) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.uuid])
+    }
 }
