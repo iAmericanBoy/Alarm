@@ -27,6 +27,7 @@ class Alarm: Codable {
         self.name = name
         self.fireDate = fireDate
         self.enabled = enabled
+        self.uuid = UUID().uuidString
     }
 }
 
